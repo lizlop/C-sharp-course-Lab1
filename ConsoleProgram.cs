@@ -49,14 +49,19 @@ namespace Lab1
                 }
             }
         }
-        private static void FindEntry()
+        private static bool IsEmpty()
         {
             if (book.PageCount() == 0)
             {
                 Console.WriteLine("Phone Book is empty");
                 Console.ReadKey(true);
-                return;
+                return true;
             }
+            return false;
+        }
+        private static void FindEntry()
+        {
+            if (IsEmpty()) return;
             bool success = false;
             int page = 0;
             do
@@ -84,12 +89,7 @@ namespace Lab1
 
         private static void IterateEntriesShort()
         {
-            if (book.PageCount() == 0)
-            {
-                Console.WriteLine("Phone Book is empty");
-                Console.ReadKey(true);
-                return;
-            }
+            if (IsEmpty()) return;
             foreach (PhoneEntry entry in book)
             {
                 Console.WriteLine(entry.ToStringShort());
@@ -99,12 +99,7 @@ namespace Lab1
 
         private static void IterateEntries()
         {
-            if (book.PageCount() == 0)
-            {
-                Console.WriteLine("Phone Book is empty");
-                Console.ReadKey(true);
-                return;
-            }
+            if (IsEmpty()) return;
             foreach (PhoneEntry entry in book)
             {
                 Console.WriteLine(entry.ToString());
@@ -114,12 +109,7 @@ namespace Lab1
 
         private static void DeleteEntry()
         {
-            if (book.PageCount() == 0)
-            {
-                Console.WriteLine("Phone Book is empty");
-                Console.ReadKey(true);
-                return;
-            }
+            if (IsEmpty()) return;
             bool success = false;
             int page = 0;
             Console.Write("Number of the page: ");
@@ -142,12 +132,7 @@ namespace Lab1
 
         private static void ChangeEntry()
         {
-            if (book.PageCount() == 0)
-            {
-                Console.WriteLine("Phone Book is empty");
-                Console.ReadKey(true);
-                return;
-            }
+            if (IsEmpty()) return;
             bool success = false;
             int page = 0;
             do
