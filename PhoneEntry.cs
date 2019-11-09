@@ -9,8 +9,8 @@ namespace PhoneBookSpace
         static readonly string phonePattern = "^[+]?[0-9-]{9,15}$";
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Patronymic { get; set; }
-        //public string Phone { get; private set; }
+        public string Patronymic { get; set; } 
+
         private string phone;
         public string GetPhone()
         {
