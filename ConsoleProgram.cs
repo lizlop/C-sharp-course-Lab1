@@ -164,16 +164,16 @@ namespace Lab1
             entry.Patronymic = EditString(entry.Patronymic);
             do
             {
-                Console.Write("Phone:\n" + entry.Phone);
-                success = entry.SetPhone(EditString(entry.Phone));
+                Console.Write("Phone:\n" + entry.GetPhone());
+                success = entry.SetPhone(EditString(entry.GetPhone()));
                 if (!success) Console.WriteLine("Phone isn't correct. Try again.");
             } while (!success);
             Console.Write("Country:\n" + entry.Country);
             entry.Country = EditString(entry.Country);
             do
             {
-                Console.Write("Birthday:\n" + entry.GetBirthday());
-                success = entry.SetBirthday(EditString(entry.GetBirthday()));
+                Console.Write("Birthday:\n" + entry.GetBirthdayString());
+                success = entry.SetBirthdayString(EditString(entry.GetBirthdayString()));
                 if (!success) Console.WriteLine("Phone isn't correct. Try again.");
             } while (!success);
             Console.Write("Company:\n" + entry.Company);
@@ -226,7 +226,7 @@ namespace Lab1
             do
             {
                 Console.Write("Birthday: ");
-                success = entry.SetBirthday(Console.ReadLine());
+                success = entry.SetBirthdayString(Console.ReadLine());
                 if (!success) Console.WriteLine("Phone isn't correct. Try again.");
             } while (!success);
             Console.Write("Company: ");

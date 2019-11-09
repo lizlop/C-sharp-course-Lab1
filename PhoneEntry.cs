@@ -10,34 +10,40 @@ namespace PhoneBookSpace
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Patronymic { get; set; }
-        public string Phone { get; private set; }
+        //public string Phone { get; private set; }
+        private string phone;
+        public string GetPhone()
+        {
+            return phone;
+        }
         public bool SetPhone(string value)
         {
             if (Regex.Match(value, phonePattern).Success)
             {
-                Phone = value;
+                phone = value;
                 return true;
             }
             else return false;
         }
         public string Country { get; set; }
+
+        private DateTime birthday;
         public DateTime Birthday { get; set; }
-        public bool SetBirthday(string value)
+        public bool SetBirthdayString(string value)
         {
             if (value == "" || value == "-")
             {
-                Birthday = DateTime.MinValue;
+                birthday = DateTime.MinValue;
                 return true;
             }
-            DateTime date = new DateTime();
-            if (DateTime.TryParse(value, out date))
+            if (DateTime.TryParse(value, out DateTime date))
             {
-                Birthday = date;
+                birthday = date;
                 return true;
             }
             else return false;
         }
-        public string GetBirthday() 
+        public string GetBirthdayString() 
         {
             return Birthday.Equals(DateTime.MinValue) ? "" : Birthday.ToShortDateString();
         }
@@ -56,9 +62,9 @@ namespace PhoneBookSpace
                 "\nLast Name: " + LastName +
                 "\nFirst Name: " + FirstName +
                 "\nPatronymic: " + Patronymic +
-                "\nPhone: " + Phone +
+                "\nPhone: " + phone +
                 "\nCountry: " + Country +
-                "\nBirthday: " + GetBirthday() +
+                "\nBirthday: " + GetBirthdayString() +
                 "\nCompany: " + Company +
                 "\nPosition: " + Position +
                 "\nNotes: " + Notes;
@@ -68,7 +74,7 @@ namespace PhoneBookSpace
         {
             return "\nPage " + PageNumber +
                 "\n" + FirstName + " " + LastName +
-                "\n" + Phone;
+                "\n" + phone;
         }
     }
 }
